@@ -1,0 +1,23 @@
+<ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="{% url 'myapp:home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myapp:register' %}">Register User</a>
+    </li>
+    {% if user.is_authenticated %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myapp:profile' %}">Profile</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myapp:reset_password' %}">Change Password</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'myapp:user_logout' %}">Logout</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'myapp:login' %}">Login</a>
+    </li>
+    {% endif %}
+  </ul>

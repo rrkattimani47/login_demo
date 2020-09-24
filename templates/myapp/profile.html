@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>{{user.username}} | Profile</title>  
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+      <h2>Find Your Details Below!!!</h2>
+      <br>
+        <h3>UserName  :  {{user.username}}</h3>
+        <h3>Email     :  {{user.email}}</h3>
+  </div>
+{% endblock %}
