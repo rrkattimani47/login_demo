@@ -8,5 +8,7 @@ urlpatterns = [
     path('logout/',views.user_logout,name='user_logout'),
     path('profile/',views.profile,name="profile"),
     path('reset_password/',views.reset_password,name="reset_password"),
+    path('frgt/',views.frgt_pwd,name="frgt"),
+    path('frgt/<id>',views.res_pwd,name="res_pwd"),
 
 ]

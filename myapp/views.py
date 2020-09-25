@@ -51,5 +51,32 @@ def reset_password(request):
             request.user.set_password(password)
             request.user.save()
         else:
+            return render(request,'myapp/forgot_password.html',{'form':form})
+    return render(request,'myapp/forgot_password.html',{'form':form})
+
+from django.core.mail import send_mail
+
+def frgt_pwd(request):
+    if request.method=="POST":
+        username=request.POST['username']
+        user=User.objects.get(username=username)
+        link="http://127.0.0.1:8000/frgt/{}".format(user.id)
+        send_mail("Password Reset Link",
+        "click on the link to reset password\n"+link,
+        "akshay.python@gmail.com",
+        (user.email,),
+        fail_silently=False)
+    return render(request,"myapp/frgtpwd.html")
+
+def res_pwd(request,id):
+    form=PasswordResetForm()
+    if request.method=="POST":
+        form=PasswordResetForm(request.POST)
+        if form.is_valid():
+            password=form.cleaned_data.get('password')
+            user=User.objects.get(id=id)
+            user.set_password(password)
+            user.save()
+        else:
             return render(request,'myapp/forgot_passsword.html',{'form':form})
     return render(request,'myapp/forgot_password.html',{'form':form})

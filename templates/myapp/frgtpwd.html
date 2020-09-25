@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  <title>Forgot Password</title>
+{% endblock %}
+
+{% block content %}
+  <div class="jumbotron">
+      
+      <center>
+        <h4>After Submitting Check Your Mail For Reset Link</h4>
+          <form method="POST">
+              {% csrf_token %}
+              <label for="username">User Name : </label>
+              <input type="text" name="username" id="username" required>
+              <input type="submit" value="Submit" class="btn btn-primary">
+          </form>
+      </center>
+  </div>
+{% endblock %}

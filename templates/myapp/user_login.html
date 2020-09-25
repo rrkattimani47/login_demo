@@ -2,11 +2,12 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-  <title>My Login Page</title>
+  <title>Login Page</title>
 {% endblock %}
 
 {% block content %}
-  <form method="POST">
+  <center>
+    <form method="POST">
       {% csrf_token %}
         <div class="form-group">
           <label for="exampleInputEmail1">UserName</label>
@@ -17,7 +18,8 @@
           <label for="exampleInputPassword1">Password</label>
           <input type="password" class="form-control" name="pwd" id="exampleInputPassword1">
         </div>
-        
+        <a href="{% url 'myapp:frgt' %}">Forgot Password?</a>
       <input type="submit" value="Login" class="btn btn-primary">
   </form>
+  </center>
 {% endblock %}
